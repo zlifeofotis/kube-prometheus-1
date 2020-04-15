@@ -62,6 +62,7 @@ cd ..
 
 ###开始配置nfs-client-provisioner动态存储
 echo 
+echo "5.启用nfs-client-provisioner动态存储"
 cd nfs-client
 sh install.sh
 cd ..
