@@ -1,0 +1,35 @@
+  {{ define "email.to.html" }}
+  {{ if gt (len .Alerts.Firing) 0 -}}
+  ? Alerts Firing ?? ?? : <br>
+  <br>
+  <br>
+  {{ range .Alerts }}
+ -------------------->START<-------------------- <br>
+  ?? 触发警报 ? ?? : {{ .Labels.alertname }} <br>
+  ?? 告警级别: {{ .Labels.severity }} <br>
+  ?? 触发时间?: {{ (.StartsAt.Add 28800e9).Format "2006-01-02 15:04:05" }} <br>
+  ?? 告警详情: {{ .Annotations.message }} <br>
+  ?? 警报链接: {{ .GeneratorURL }}  <br>
+  ?? 备注详情??: {{ .Annotations.runbook_url }} <br>
+  -------------------->END<-------------------- <br>
+  <br>
+  <br>
+  {{- end }}
+  {{- end }}
+  {{ if gt (len .Alerts.Resolved) 0 -}}
+  ? Alerts Resolved ??: <br>
+  {{ range .Alerts }}
+  -------------------->START<-------------------- <br>
+  ?? 触发警报 ? : {{ .Labels.alertname }} <br>
+  ?? 告警级别: {{ .Labels.severity }} <br>
+  ? 触发时间 ?: {{ (.StartsAt.Add 28800e9).Format "2006-01-02 15:04:05" }} <br>
+  ? 恢复时间 ?: {{ (.EndsAt.Add 28800e9).Format "2006-01-02 15:04:05" }} <br>
+  ?? 告警详情: {{ .Annotations.message }} <br>
+  ?? 警报链接: {{ .GeneratorURL }}  <br>
+  ?? 备注详情: {{ .Annotations.runbook_url }} <br>
+  -------------------->END<-------------------- <br>
+  <br>
+  <br>
+  {{- end }}
+  {{- end }}
+  {{- end }}
