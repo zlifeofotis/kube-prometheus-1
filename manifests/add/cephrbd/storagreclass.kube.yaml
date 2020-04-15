@@ -9,8 +9,8 @@ parameters:
   adminId: admin
   adminSecretNamespace: default
   adminSecretName: ceph-admin-secret
-  userId: admin 
+  userId: kube
   userSecretNamespace: default
-  userSecretName: ceph-admin-secret
+  userSecretName: ceph-secret
   imageFormat: "2"
   imageFeatures: layering
